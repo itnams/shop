@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@shop/about-us": ["src/libs/about-us/src/index.ts"],
       "@shop/header": ["src/libs/common/header/src/index.ts"],
-      "@shop/home": ["src/libs/home/src/index.ts"]
+      "@shop/home": ["src/libs/home/src/index.ts"],
+      "@shop/login": ["src/libs/login/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
