@@ -23,4 +23,7 @@ export class HeaderComponent {
   checkActive(url: string){
     return this.routerLink.includes(url)
   }
+  routerLinkProduct(type: string){
+    this.router.navigateByUrl(`/product?productType=${type}`)
+  }
 }

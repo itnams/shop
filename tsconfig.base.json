@@ -16,9 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@shop/about-us": ["src/libs/about-us/src/index.ts"],
+      "@shop/detail": ["src/libs/product/detail/src/index.ts"],
       "@shop/footer": ["src/libs/common/footer/src/index.ts"],
       "@shop/header": ["src/libs/common/header/src/index.ts"],
       "@shop/home": ["src/libs/home/src/index.ts"],
+      "@shop/list": ["src/libs/product/list/src/index.ts"],
       "@shop/login": ["src/libs/login/src/index.ts"]
     }
   },

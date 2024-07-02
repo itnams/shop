@@ -1,0 +1,11 @@
+{
+    "/facebook": {
+      "target": "https://www.facebook.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/facebook": ""
+      }
+    }
+  }

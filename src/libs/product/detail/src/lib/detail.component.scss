@@ -1,0 +1,21 @@
+.input-group .form-control,
+.input-group .input-group-text {
+    border-radius: 50px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.img-fluid {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.star-rating .bi  {
+    font-size: 2em;
+    color: #FFE4E1; 
+    cursor: pointer;
+  }

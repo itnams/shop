@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header" style="background-color: #FFE4E1;">
+            <h4 class="card-title text-center">Đăng nhập</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="{}">
+              <div class="mb-3">
+                <label for="username" class="form-label">Tên đăng nhập</label>
+                <input type="text" formControlName="username" id="username" class="form-control" placeholder="Nhập tên đăng nhập">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" formControlName="password" id="password" class="form-control" placeholder="Nhập mật khẩu">
+              </div>
+              <p>Bạn chưa có tài khoản ? <a href="">Đăng ký tại đây</a></p>
+              <button [disabled]="loginForm.invalid" type="submit" class="btn btn-secondary w-100">Đăng nhập</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 33vh;">
+
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 .background-primary {
-    background-color: #FFE4E1;
+    background-color: #FFE4E1 !important;
 }
 .background-primary-400 {
     background-color: #f4e6e4 !important;
@@ -15,4 +15,8 @@
 
 .footer-color {
     color: #0d0505;
+}
+
+.border-none {
+    border: none !important;
 }

@@ -1,0 +1,283 @@
+<div class="container py-5">
+    <form [formGroup]="searchForm" (ngSubmit)="{}">
+        <div class="row mb-3 gy-3">
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="Tìm kiếm theo tên" formControlName="searchTerm">
+            </div>
+            <div class="col-md-2">
+                <input type="number" class="form-control" placeholder="Giá tối thiểu" formControlName="minPrice">
+            </div>
+            <div class="col-md-2">
+                <input type="number" class="form-control" placeholder="Giá tối đa" formControlName="maxPrice">
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" formControlName="productTypes" (change)="{}">
+                    <option *ngFor="let option of productTypes" [value]="option.value">{{ option.label }}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" formControlName="sortOrder" (change)="{}">
+                    <option *ngFor="let option of sortOrderOptions" [value]="option.value">{{ option.label }}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn background-primary w-100"><i class="bi bi-search"></i></button>
+            </div>
+        </div>
+    </form>
+    <div class="row gy-4">
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top"
+                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
+                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                          <div class="col-8">
+                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full text-center mt-4">
+        <button (click)="{}" class="mx-auto btn background-primary">Xem thêm</button>
+    </div>
+    <div class="instruct">
+        <h3>Cách bảo quản balo TTWN Bear bền đẹp</h3>
+        <p>Trong quá trình sử dụng, bạn lưu ý một vài điều sau để tăng tuổi thọ của balo nhé!
+            <br>
+            - Luôn lau sạch balo sau khi đi mưa về và hong khô ở nơi thoáng mát. Tuyệt đối không sử dụng máy sấy, tránh
+            nhiệt độ cao sẽ làm ảnh hưởng đến chất da trên bề mặt balo.
+            <br>
+            - Không giặt balo với xà bông và không chà xát mạnh, tránh làm xước da.
+            <br>
+            - Để xử lý các vết trầy xước trên balo, bạn chỉ cần dùng một chút sơn móng tay cùng màu và tô nhẹ lên vết
+            xước là xong!
+            <br>
+            - Để balo bóng đẹp hoàn hảo, bạn có thể bôi một lớp vaseline lên bề mặt da PVC nhé!
+        </p>
+        <h3>
+            Cách phân biệt balo TTWN Bear chính hãng và balo giả
+        </h3>
+        <p>
+            Trên thị trường đang tràn lan rất nhiều mẫu balo hàng giả, hàng nhái. Để tránh mua nhầm các sản phẩm này,
+            bạn lưu ý:
+            <br>
+            - Kiểm tra chất da, mặt trong và mặt ngoài balo cẩn thận. Các sản phẩm chính hãng luôn có chất da mềm mại.
+            Logo của hãng TTWN Bear được dập chìm/khắc nổi theo khuôn chung nên khá sắc nét. Ngược lại, các sản phẩm
+            hàng fake thường có mặt da balo thô sần, khóa kéo không mượt và đường nét logo cẩu thả, kém sang.
+            <br>
+            - Balo chính hãng luôn vào phom đẹp mắt. Các đường khung định hình phom balo được may chắc chắn, kỹ càng.
+            Ngược lại, balo fake rất dễ mất phom, biến dạng,...
+            <br>
+            - Balo TTWN Bear nhập khẩu chính hãng tại Việt Nam luôn có in QR code gắn trên tag sản phẩm. Quét mã QR này,
+            bạn sẽ được dẫn về trang Zalo OA chính thức của hãng. Trong khi đó, các sản phẩm fake sẽ không có mã này.
+        </p>
+        <p><b>Lời khuyên dành cho bạn: </b></p>
+        <p>Luôn ưu tiên chọn mua balo nhập khẩu chính hãng. Công ty nhập khẩu sẽ luôn có các giấy tờ chứng minh chất
+            lượng sản phẩm cao cấp. Bên cạnh đó, đơn vị này sẽ đứng ra chịu mọi trách nhiệm, hỗ trợ đổi hàng nhanh chóng
+            nếu sản phẩm có lỗi đường may, khóa kéo…
+            <br>
+            Riêng với những bạn mua hàng xách tay, hãy chọn người quen để mua đúng hàng xịn. Tuy nhiên, nếu sản phẩm
+            xách tay có lỗi, bạn sẽ rất khó đổi trả. Bởi hàng thường được xách tay với số lượng ít. Và nếu được đổi trả
+            thì bạn cũng phải chờ rất lâu mới có balo mới về tay.
+        </p>
+    </div>
+</div>

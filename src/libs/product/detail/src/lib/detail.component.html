@@ -1,0 +1,135 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img class="card-img-top"
+        src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg">
+    </div>
+    <div class="col-md-6">
+      <h2>
+        Túi Da Công Sở Da Bò TOGO Cao Cấp
+      </h2>
+      <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+      <div class="accordion my-4" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              Mô tả sản phẩm
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>Thiết kế độc đáo của túi xách này giúp bạn dễ dàng phù hợp với nhiều phong cách khác nhau, từ trang nhã
+                đến thanh lịch. Nó có kích thước khá lớn, cho phép bạn có thể chứa đựng nhiều hơn những vật dụng cần
+                thiết trong một lần du lịch hoặc một ngày làm việc. Dây đeo vai để bạn có thể thắt chặt túi xách lên
+                mình và di chuyển dễ dàng hơn.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Chính sách giao hàng
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              BAGS luôn hướng đến việc cung cấp dịch vụ vận chuyển tốt nhất với mức phí cạnh tranh cho tất cả các đơn
+              hàng mà quý khách đặt với chúng tôi. Chúng tôi hỗ trợ giao hàng trên toàn quốc với chính sách giao hàng cụ
+              thể như sau:
+              <ul>
+                <li>
+                  Phạm vi áp dụng: Giao hàng tận nơi với các đối tác uy tín như giaohangtietkiem.vn ( giao hàng toàn
+                  quốc), GHN</li>
+                <li>
+                  Đối tượng áp dụng: Khách hàng đặt hàng&nbsp;<strong>ONLINE</strong>&nbsp;trên
+                  trang&nbsp;<strong>WEBSITE/ FANPAGE/ZALO/</strong>&nbsp;<strong>INSTAGRAM</strong>&nbsp;cửa hàng chính
+                  hãng BAGS</li>
+                <li>
+                  Thời gian nhận hàng:&nbsp;Đối với đơn hàng Online tại TPHCM, sản phẩm sẽ được giao sớm nhất là 1 ngày
+                  sau khi đặt.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Hướng dẫn bảo quản
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>Hạn chế sản phẩm bị thấm nước.</p>
+              <ul>
+                <li>&nbsp;Có thể dùng quạt, khăn làm khô. Không sử dụng máy sấy.</li>
+                <li>&nbsp;Tránh tiếp xúc với hóa chất, nước hoa.</li>
+                <li>&nbsp;Tránh vật cứng nhọn, vật nặng tỳ đè lên sản phẩm.</li>
+                <li>&nbsp;Tránh ánh nắng trực tiếp, nhiệt độ cao, hạn chế để sản phẩm trong cốp xe.</li>
+              </ul>
+              <p><b>Bảo hành</b> : 1 đổi 1 trong 7 ngày nếu có lỗi do hãng sản xuất
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control rounded-pill" [(ngModel)]="quantity" min="1" aria-label="Quantity">
+        <div class="input-group-append ps-2">
+          <span class="input-group-text rounded-pill">Số lượng</span>
+        </div>
+      </div>
+      <button type="submit" class="btn background-primary w-100">Thêm vào giỏ hàng</button>
+    </div>
+  </div>
+  <div id="rating">
+    <h3>Đánh giá sản phẩm</h3>
+    <div class="star-rating">
+      <ng-container *ngFor="let star of stars; let i = index">
+        <i class="pe-2 bi" [ngClass]="star <= rating ? 'bi-star-fill' : 'bi-star'" (click)="setRating(star)"></i>
+      </ng-container>
+    </div>
+      <textarea class="form-control" name="" id="" [(ngModel)]="comment"></textarea>
+      <button type="submit" class="mt-2 btn background-primary w-100">Nhận xét</button>
+      <div class="my-2">
+        <div class="card mb-3">
+          <div class="card-body">
+            <p class="card-text">OK</p>
+            <p class="card-text">
+              <small class="text-muted">Rated: 5/5</small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Reviewed by: Nael</small>
+            </p>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <p class="card-text">OK</p>
+            <p class="card-text">
+              <small class="text-muted">Rated: 5/5</small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Reviewed by: Nael</small>
+            </p>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <p class="card-text">OK</p>
+            <p class="card-text">
+              <small class="text-muted">Rated: 5/5</small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Reviewed by: Nael</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
