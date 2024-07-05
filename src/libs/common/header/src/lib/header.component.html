@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light background-primary">
     <div class="container container-fluid">
-        <a class="navbar-brand" href="#"><img src="/img/logo.jpg" alt="" width="120"></a>
+        <a class="navbar-brand" [routerLink]="['/home']"><img src="/img/logo.jpg" alt="" width="120"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,12 +30,21 @@
                         <li><a class="dropdown-item" (click)="routerLinkProduct('3')">Ví</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item dropdown" *ngIf="((token$ | async)?.length ?? 0) > 0">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{userName$ | async}}
+                    </a>
+                    <ul class="dropdown-menu background-primary-400" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item" *ngIf="((token$ | async)?.length ?? 0) == 0">
                     <a class="nav-link"  [ngClass]="{active:
                         checkActive('login') == true
                     }" [routerLink]="['login']">Đăng nhập</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="((token$ | async)?.length ?? 0) > 0">
                     <a class="nav-link" [routerLink]="['']"><i class="bi bi-bag"></i> (4)</a>
                 </li>
             </ul>

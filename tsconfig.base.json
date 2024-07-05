@@ -16,12 +16,17 @@
     "baseUrl": ".",
     "paths": {
       "@shop/about-us": ["src/libs/about-us/src/index.ts"],
+      "@shop/data-access": ["src/libs/common/data-access/src/index.ts"],
+      "@shop/delivery-policy": ["src/libs/delivery-policy/src/index.ts"],
       "@shop/detail": ["src/libs/product/detail/src/index.ts"],
       "@shop/footer": ["src/libs/common/footer/src/index.ts"],
       "@shop/header": ["src/libs/common/header/src/index.ts"],
       "@shop/home": ["src/libs/home/src/index.ts"],
       "@shop/list": ["src/libs/product/list/src/index.ts"],
-      "@shop/login": ["src/libs/login/src/index.ts"]
+      "@shop/loading-bar": ["src/libs/common/loading-bar/src/index.ts"],
+      "@shop/login": ["src/libs/login/src/index.ts"],
+      "@shop/privacy-policy": ["src/libs/privacy-policy/src/index.ts"],
+      "@shop/return-policy": ["src/libs/return-policy/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
