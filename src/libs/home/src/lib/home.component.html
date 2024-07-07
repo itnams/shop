@@ -24,7 +24,7 @@
         [slidesPerView]="slidesPerView" autoplay-delay="2500" style="width: 100%; height: auto;">
             <swiper-slide *ngFor="let item of ((newHandBag$ | async) ?? [])">
                 <div class="card" style="height: 610px;">
-                    <img class="card-img-top" style="max-height: 410px;"
+                    <img class="card-img-top" style="height: 410px;"
                         [src]="'data:image/png;base64,' + (item.images[0].imagePath)"
                         alt="Card image cap">
                     <div class="card-body">
@@ -51,7 +51,7 @@
         [slidesPerView]="slidesPerView" autoplay-delay="2500" style="width: 100%; height: auto;">
             <swiper-slide *ngFor="let item of ((newBalo$ | async) ?? [])">
                 <div class="card"  style="height: 610px;">
-                    <img class="card-img-top" style="max-height: 410px;"
+                    <img class="card-img-top" style="height: 410px;"
                         [src]="'data:image/png;base64,' + (item.images[0].imagePath)"
                         alt="Card image cap">
                     <div class="card-body">
@@ -78,7 +78,7 @@
         [slidesPerView]="slidesPerView" autoplay-delay="2500" style="width: 100%; height: auto;">
             <swiper-slide *ngFor="let item of ((newWallet$ | async) ?? [])">
                 <div class="card"  style="height: 610px;">
-                    <img class="card-img-top"  style="max-height: 410px;"
+                    <img class="card-img-top"  style="height: 410px;"
                         [src]="'data:image/png;base64,' + (item.images[0].imagePath)"
                         alt="Card image cap">
                     <div class="card-body">

@@ -28,7 +28,7 @@
     <div class="row gy-4">
         <div class="col-md-3" *ngFor="let item of (products$ | async) ?? []">
             <div class="card" style="height: 610px;">
-                <img class="card-img-top" style="max-height: 410px;"
+                <img class="card-img-top" style="height: 410px;"
                     [src]="'data:image/png;base64,' + (item.images![0].imagePath)"
                     alt="Card image cap">
                 <div class="card-body">
