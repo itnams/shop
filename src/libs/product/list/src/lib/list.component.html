@@ -16,7 +16,7 @@
                 </select>
             </div>
             <div class="col-md-2">
-                <select class="form-control" formControlName="sortOrder" (change)="{}">
+                <select class="form-control" formControlName="sortOrder" (change)="searchProduct()">
                     <option *ngFor="let option of sortOrderOptions" [value]="option.value">{{ option.label }}</option>
                 </select>
             </div>
@@ -26,218 +26,28 @@
         </div>
     </form>
     <div class="row gy-4">
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+        <div class="col-md-3" *ngFor="let item of (products$ | async) ?? []">
+            <div class="card" style="height: 580px;">
+                <img class="card-img-top" style="max-height: 410px;"
+                    [src]="'data:image/png;base64,' + (item.images![0].imagePath)"
                     alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
+                    <h5 class="card-title">{{item.productName}}</h5>
+                    <p class="card-text"><s>{{item.oldPrice}}đ</s> &nbsp; <b>{{item.price}}đ</b> ({{((item.price ?? 0)/(item.oldPrice ?? 0)) * 100}}%)</p>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
+                <div class="d-flex">
+                    <div class="me-2" *ngIf="((token$ | async)?.length ?? 0) > 0" >
+                        <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                          <div class="col-8">
-                                        <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                                    </div>
+                    <div class="w-100">
+                        <a [routerLink]="['/product',item.productId]" class="btn btn-secondary w-100">Chi tiết</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="w-full text-center mt-4">
-        <button (click)="{}" class="mx-auto btn background-primary">Xem thêm</button>
+        <button (click)="loadMore()" [disabled]="(nextLink$ | async)?.length == 0" class="mx-auto btn background-primary">Xem thêm</button>
     </div>
     <div class="instruct">
         <h3>Cách bảo quản balo BAGS bền đẹp</h3>

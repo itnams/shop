@@ -1,14 +1,27 @@
-<div class="container py-5">
+<div class="container py-5" *ngIf="product$ | async as product">
   <div class="row">
     <div class="col-md-6">
-      <img class="card-img-top"
-        src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg">
+      <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
+        thumbs-swiper=".mySwiper2" loop="true" space-between="10"  autoplay-delay="2500">
+        <swiper-slide *ngFor="let image of product.images">
+          <img [src]="'data:image/png;base64,' + image.imagePath" style="width: 100%;height: 450px;" />
+        </swiper-slide>
+      </swiper-container>
+      <swiper-container class="mySwiper2" loop="true" space-between="10" [slidesPerView]="(product.images?.length ?? 0)" free-mode="true"
+      watch-slides-progress="true">
+      <swiper-slide  *ngFor="let image of product.images" class="pt-2">
+        <img [src]="'data:image/png;base64,' + image.imagePath" style="width: 100%;height: 250px;"/>
+      </swiper-slide>
+    </swiper-container>
+  
+      <!-- <img class="card-img-top" src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"> -->
     </div>
     <div class="col-md-6">
       <h2>
-        Túi Da Công Sở Da Bò TOGO Cao Cấp
+        {{product.productName}}
       </h2>
-      <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+      <p class="card-text"><s>{{product.oldPrice}}đ</s> &nbsp; <b>{{product.price}}đ</b> ({{(product.price ??
+        0)/(product.oldPrice ?? 0) * 100}}%)</p>
       <div class="accordion my-4" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -20,10 +33,7 @@
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <p>Thiết kế độc đáo của túi xách này giúp bạn dễ dàng phù hợp với nhiều phong cách khác nhau, từ trang nhã
-                đến thanh lịch. Nó có kích thước khá lớn, cho phép bạn có thể chứa đựng nhiều hơn những vật dụng cần
-                thiết trong một lần du lịch hoặc một ngày làm việc. Dây đeo vai để bạn có thể thắt chặt túi xách lên
-                mình và di chuyển dễ dàng hơn.</p>
+              <p>{{product.description}}</p>
             </div>
           </div>
         </div>
@@ -78,58 +88,39 @@
           </div>
         </div>
       </div>
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" *ngIf="((token$ | async)?.length ?? 0) > 0">
         <input type="number" class="form-control rounded-pill" [(ngModel)]="quantity" min="1" aria-label="Quantity">
         <div class="input-group-append ps-2">
           <span class="input-group-text rounded-pill">Số lượng</span>
         </div>
       </div>
-      <button type="submit" class="btn background-primary w-100">Thêm vào giỏ hàng</button>
+      <button *ngIf="((token$ | async)?.length ?? 0) > 0" type="submit" class="btn background-primary w-100">Thêm vào
+        giỏ hàng</button>
     </div>
   </div>
   <div id="rating">
     <h3>Đánh giá sản phẩm</h3>
-    <div class="star-rating">
+    <div *ngIf="((token$ | async)?.length ?? 0) > 0" class="star-rating">
       <ng-container *ngFor="let star of stars; let i = index">
         <i class="pe-2 bi" [ngClass]="star <= rating ? 'bi-star-fill' : 'bi-star'" (click)="setRating(star)"></i>
       </ng-container>
     </div>
-      <textarea class="form-control" name="" id="" [(ngModel)]="comment"></textarea>
-      <button type="submit" class="mt-2 btn background-primary w-100">Nhận xét</button>
-      <div class="my-2">
-        <div class="card mb-3">
-          <div class="card-body">
-            <p class="card-text">OK</p>
-            <p class="card-text">
-              <small class="text-muted">Rated: 5/5</small>
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Reviewed by: Nael</small>
-            </p>
-          </div>
-        </div>
-        <div class="card mb-3">
-          <div class="card-body">
-            <p class="card-text">OK</p>
-            <p class="card-text">
-              <small class="text-muted">Rated: 5/5</small>
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Reviewed by: Nael</small>
-            </p>
-          </div>
-        </div>
-        <div class="card mb-3">
-          <div class="card-body">
-            <p class="card-text">OK</p>
-            <p class="card-text">
-              <small class="text-muted">Rated: 5/5</small>
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Reviewed by: Nael</small>
-            </p>
-          </div>
+    <textarea *ngIf="((token$ | async)?.length ?? 0) > 0" class="form-control" name="" id=""
+      [(ngModel)]="comment"></textarea>
+    <button (click)="reviewProcduct()" *ngIf="((token$ | async)?.length ?? 0) > 0" type="submit"
+      class="mt-2 btn background-primary w-100">Nhận xét</button>
+    <div class="my-2">
+      <div *ngFor="let item of (review$ | async) ?? []" class="card mb-3">
+        <div class="card-body">
+          <p class="card-text">{{item.comment}}</p>
+          <p class="card-text">
+            <small class="text-muted">Rated: {{item.rating}}/5</small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Reviewed by: {{item.user?.userName}}</small>
+          </p>
         </div>
       </div>
     </div>
+  </div>
 </div>
