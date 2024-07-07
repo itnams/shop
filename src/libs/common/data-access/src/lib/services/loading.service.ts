@@ -6,7 +6,6 @@ import { LoadingBarComponent } from '@shop/loading-bar';
 })
 export class LoadingService {
   private loadingBarComponent!: LoadingBarComponent;
-
   setLoadingBarComponent(loadingBarComponent: LoadingBarComponent) {
     this.loadingBarComponent = loadingBarComponent;
   }

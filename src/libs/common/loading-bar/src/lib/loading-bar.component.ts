@@ -9,13 +9,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './loading-bar.component.scss',
 })
 export class LoadingBarComponent {
-  isLoading = false;
-
+  count = 0;
   show() {
-    this.isLoading = true;
+    this.count++;
   }
 
   hide() {
-    this.isLoading = false;
+    this.count--;
   }
 }
