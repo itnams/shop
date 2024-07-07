@@ -23,13 +23,13 @@
         <swiper-container class="mySwiper" loop="true" space-between="30"
         [slidesPerView]="slidesPerView" autoplay-delay="2500" style="width: 100%; height: auto;">
             <swiper-slide *ngFor="let item of ((newHandBag$ | async) ?? [])">
-                <div class="card">
+                <div class="card" style="height: 580px;">
                     <img class="card-img-top"
-                        [src]="(item.images[0]?.imagePath ?? '')"
+                        [src]="'data:image/png;base64,' + (item.images[0].imagePath)"
                         alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{item.productName}}</h5>
-                        <p class="card-text"><s>{{item.oldPrice}}đ</s>{{item.price}} {{((item.oldPrice ?? 0)/(item.price ?? 0)) * 100}}</p>
+                        <p class="card-text"><s>{{item.oldPrice}}đ</s> &nbsp; <b>{{item.price}}đ</b> ({{((item.price ?? 0)/(item.oldPrice ?? 0)) * 100}}%)</p>
                         <div class="d-flex">
                             <div class="me-2" *ngIf="((token$ | async)?.length ?? 0) > 0" >
                                 <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
@@ -48,67 +48,48 @@
             <span class="title-sale">Balo</span>
         </div>
         <swiper-container class="mySwiper" loop="true" space-between="30"
-        slides-per-view="3" autoplay-delay="2500" style="width: 100%; height: auto;">
-        <swiper-slide>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="d-flex">
-                        <div class="me-2" *ngIf="((token$ | async)?.length ?? 0) > 0" >
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                        <div class="w-100">
-                            <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </swiper-slide>
-        <swiper-slide>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                    <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
-                    <div class="d-flex">
-                        <div class="me-2" *ngIf="((token$ | async)?.length ?? 0) > 0" >
-                            <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
-                        </div>
-                        <div class="w-100">
-                            <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </swiper-slide>
-    </swiper-container>
-    </div>
-    <div id="product">
-        <div class=" text-center my-5">
-            <span class="title-sale">Ví</span>
-        </div>
-         <swiper-container class="mySwiper" loop="true" space-between="30"
-            slides-per-view="3" autoplay-delay="2500" style="width: 100%; height: auto;">
-            <swiper-slide>
-                <div class="card">
+        [slidesPerView]="slidesPerView" autoplay-delay="2500" style="width: 100%; height: auto;">
+            <swiper-slide *ngFor="let item of ((newBalo$ | async) ?? [])">
+                <div class="card"  style="height: 580px;">
                     <img class="card-img-top"
-                        src="https://product.hstatic.net/1000397717/product/435731797_724629799837879_4080198728404562454_n_8438ad9902894dfa94d1f990f4264604_master.jpg"
+                        [src]="'data:image/png;base64,' + (item.images[0].imagePath)"
                         alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Túi Da Công Sở Da Bò TOGO Cao Cấp</h5>
-                        <p class="card-text"><s>3,200,000₫</s> 1,600,000đ (50%)</p>
+                        <h5 class="card-title">{{item.productName}}</h5>
+                        <p class="card-text"><s>{{item.oldPrice}}đ</s> &nbsp; <b>{{item.price}}đ</b> ({{((item.price ?? 0)/(item.oldPrice ?? 0)) * 100}}%)</p>
                         <div class="d-flex">
                             <div class="me-2" *ngIf="((token$ | async)?.length ?? 0) > 0" >
                                 <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
                             </div>
                             <div class="w-100">
-                                <a [routerLink]="['/product','1']" class="btn btn-secondary w-100">Chi tiết</a>
+                                <a [routerLink]="['/product',item.productId]" class="btn btn-secondary w-100">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </swiper-slide>
+        </swiper-container>
+    </div>
+    <div id="product">
+        <div class=" text-center my-5">
+            <span class="title-sale">Ví</span>
+        </div>
+        <swiper-container class="mySwiper" loop="true" space-between="30"
+        [slidesPerView]="slidesPerView" autoplay-delay="2500" style="width: 100%; height: auto;">
+            <swiper-slide *ngFor="let item of ((newWallet$ | async) ?? [])">
+                <div class="card"  style="height: 580px;">
+                    <img class="card-img-top"
+                        [src]="'data:image/png;base64,' + (item.images[0].imagePath)"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.productName}}</h5>
+                        <p class="card-text"><s>{{item.oldPrice}}đ</s> &nbsp; <b>{{item.price}}đ</b> ({{((item.price ?? 0)/(item.oldPrice ?? 0)) * 100}}%)</p>
+                        <div class="d-flex">
+                            <div class="me-2" *ngIf="((token$ | async)?.length ?? 0) > 0" >
+                                <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                            </div>
+                            <div class="w-100">
+                                <a [routerLink]="['/product',item.productId]" class="btn btn-secondary w-100">Chi tiết</a>
                             </div>
                         </div>
                     </div>
