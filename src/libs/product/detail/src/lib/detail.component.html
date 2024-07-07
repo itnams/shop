@@ -20,8 +20,8 @@
       <h2>
         {{product.productName}}
       </h2>
-      <p class="card-text"><s>{{product.oldPrice}}đ</s> &nbsp; <b>{{product.price}}đ</b> ({{(product.price ??
-        0)/(product.oldPrice ?? 0) * 100}}%)</p>
+      <p class="card-text"><s>{{product.oldPrice}}đ</s> &nbsp; <b>{{product.price}}đ</b> (-{{Math.round((product.price ??
+        0)/(product.oldPrice ?? 0) * 100)}}%)</p>
       <div class="accordion my-4" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">

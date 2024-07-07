@@ -20,6 +20,7 @@ import { ReviewProductCommand } from './data-access/command';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DetailComponent implements AfterViewInit {
+  Math = Math; 
   quantity: number = 1;
   comment: string = ""
   rating: number = 0;
