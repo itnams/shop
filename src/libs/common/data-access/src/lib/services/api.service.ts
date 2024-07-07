@@ -1,6 +1,6 @@
 import { AuthState } from '../store';
 import { select, Store } from '@ngrx/store';
-import { BehaviorSubject, finalize } from 'rxjs';
+import { BehaviorSubject, catchError, finalize } from 'rxjs';
 import {
   HttpClient,
   HttpErrorResponse,
@@ -46,7 +46,7 @@ export class ApiService {
     const fullUrl = this.baseUrl + url;
     return this.http
       .post<T>(fullUrl, postData, this.httpOptions)
-      .pipe(finalize(() => this.loadingService.hide()));
+      .pipe(finalize(() => this.loadingService.hide()),catchError(this.handleError));
   }
   putToPublicApi<T>(url: string, params?: any): Observable<T> {
     this.loadingService.show();
@@ -55,19 +55,19 @@ export class ApiService {
     const fullUrl = this.baseUrl + url;
     return this.http
       .put<T>(fullUrl, postData, this.httpOptions)
-      .pipe(finalize(() => this.loadingService.hide()));
+      .pipe(finalize(() => this.loadingService.hide()),catchError(this.handleError));
   }
   getFromPublicApi<T>(url: string): Observable<T> {
     this.loadingService.show();
     const fullUrl = this.baseUrl + url;
     this.prepareHeader();
-    return this.http.get<T>(fullUrl, this.httpOptions).pipe(finalize(() => this.loadingService.hide()));
+    return this.http.get<T>(fullUrl, this.httpOptions).pipe(finalize(() => this.loadingService.hide()),catchError(this.handleError));
   }
   deleteFromPublicApi<T>(url: string): Observable<T> {
     this.loadingService.show();
     const fullUrl = this.baseUrl + url;
     this.prepareHeader();
-    return this.http.delete<T>(fullUrl, this.httpOptions).pipe(finalize(() => this.loadingService.hide()));
+    return this.http.delete<T>(fullUrl, this.httpOptions).pipe(finalize(() => this.loadingService.hide()),catchError(this.handleError));
   }
   uploadFilesToPublicApi<T>(url: string, files: FormData): Observable<T> {
     this.loadingService.show();
@@ -75,6 +75,10 @@ export class ApiService {
     const fullUrl = this.baseUrl + url;
     return this.http
       .post<T>(fullUrl, files, this.httpOptions)
-      .pipe(finalize(() => this.loadingService.hide()));
+      .pipe(finalize(() => this.loadingService.hide()),catchError(this.handleError));
+  }
+  handleError(error: HttpErrorResponse) {
+    alert(error.error.message);
+    return throwError(error.error.message)
   }
 }

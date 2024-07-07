@@ -6,7 +6,6 @@ import { AuthService } from './data-access/services';
 import { LoginCommand } from './data-access/command';
 import { AuthState, login } from '@shop/data-access';
 import { Store } from '@ngrx/store';
-
 @Component({
   selector: 'login',
   standalone: true,
@@ -38,7 +37,7 @@ export class LoginComponent {
         const role = resp.data?.role ?? "";
         this.store.dispatch(login({ token, userName, role }));
         this.route.navigate(['/home'])
-      }
+      } 
     })
   }
 }
