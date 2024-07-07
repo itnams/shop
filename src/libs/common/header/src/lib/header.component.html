@@ -36,6 +36,7 @@
                         {{userName$ | async}}
                     </a>
                     <ul class="dropdown-menu background-primary-400" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" (click)="logout()">Đơn hàng</a></li>
                         <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
                     </ul>
                 </li>
@@ -44,14 +45,12 @@
                         checkActive('login') == true
                     }" [routerLink]="['login']">Đăng nhập</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav">
                 <li class="nav-item" *ngIf="((token$ | async)?.length ?? 0) > 0">
-                    <a class="nav-link" [routerLink]="['']"><i class="bi bi-bag"></i> (4)</a>
+                    <a class="nav-link" [routerLink]="['']"><i class="bi bi-bag"></i> ({{getTotalItem((cart$ | async) ?? {})}})</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>

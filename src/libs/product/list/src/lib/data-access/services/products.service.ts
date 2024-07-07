@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService, IApiResult } from '@shop/data-access';
-import { Product } from '../models';
-import { SearchProductCommand } from '../command';
+import { Cart, Product } from '../models';
+import { AddCartItemCommand, SearchProductCommand } from '../command';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +14,13 @@ export class ProductsService {
   }
   loadMoreProduct(command: SearchProductCommand, url: string){
     return this.apiService.postToPublicApi<IApiResult<Product[]>>(url,command)
+  }
+  addCartItem(command: AddCartItemCommand) {
+    const url = '/cart/add-item'
+    return this.apiService.postToPublicApi<IApiResult<Boolean>>(url, command)
+  }
+  getCart() {
+    const url = `/cart/items`
+    return this.apiService.getFromPublicApi<IApiResult<Cart>>(url)
   }
 }

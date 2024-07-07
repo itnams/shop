@@ -6,9 +6,9 @@ import { Product } from './data-access/models';
 import { ProductDetailService } from './data-access/services';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { AuthState } from '@shop/data-access';
+import { addToCart, AuthState } from '@shop/data-access';
 import { Review } from './data-access/models/review.models';
-import { ReviewProductCommand } from './data-access/command';
+import { AddCartItemCommand, ReviewProductCommand } from './data-access/command';
 
 @Component({
   selector: 'detail',
@@ -63,6 +63,20 @@ export class DetailComponent implements AfterViewInit {
   getReview() {
     this.service.getReview(this.id).subscribe(resp => {
       this.review$.next(resp.data ?? [])
+    })
+  }
+  addCartItems(){
+    const command: AddCartItemCommand = {
+      productId: this.id,
+      quantity: this.quantity
+    }
+    this.service.addCartItem(command).subscribe(resp=> {
+      if(resp.data == true){
+        this.service.getCart().subscribe(rp => {
+          const cart = rp.data ?? {};
+          this.store.dispatch(addToCart({ cart: cart }));
+        })
+      }
     })
   }
 }

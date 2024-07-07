@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { AuthState } from '@shop/data-access';
+import { addToCart, AuthState } from '@shop/data-access';
 import { HomeService } from './data-access/services';
 import { Product } from './data-access/models';
 import { SearchProductCommand } from './data-access/command';
+import { AddCartItemCommand } from './data-access/command/add-cart-item.command';
 @Component({
   selector: 'home',
   standalone: true,
@@ -66,6 +67,20 @@ export class HomeComponent implements OnInit{
     }
     this.service.searchProduct(command,10,1,'desc_id').subscribe(resp =>{
       this.newWallet$.next(resp.data ?? [])
+    })
+  }
+  addCartItems(productId: number){
+    const command: AddCartItemCommand = {
+      productId: productId,
+      quantity: 1
+    }
+    this.service.addCartItem(command).subscribe(resp=> {
+      if(resp.data == true){
+        this.service.getCart().subscribe(rp => {
+          const cart = rp.data ?? {};
+          this.store.dispatch(addToCart({ cart: cart }));
+        })
+      }
     })
   }
 }

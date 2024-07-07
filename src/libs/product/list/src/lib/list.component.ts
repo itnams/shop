@@ -4,10 +4,10 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { AuthState } from '@shop/data-access';
+import { addToCart, AuthState } from '@shop/data-access';
 import { ProductsService } from './data-access/services';
 import { Product } from './data-access/models';
-import { SearchProductCommand } from './data-access/command';
+import { AddCartItemCommand, SearchProductCommand } from './data-access/command';
 
 @Component({
   selector: 'list',
@@ -85,6 +85,20 @@ export class ListComponent implements AfterViewInit {
     this.service.loadMoreProduct(command, this.nextLink$.value).subscribe(resp => {
       this.products$.next(this.products$.value.concat(resp.data ?? []))
       this.nextLink$.next(resp.nextLink ?? '')
+    })
+  }
+  addCartItems(productId: number){
+    const command: AddCartItemCommand = {
+      productId: productId,
+      quantity: 1
+    }
+    this.service.addCartItem(command).subscribe(resp=> {
+      if(resp.data == true){
+        this.service.getCart().subscribe(rp => {
+          const cart = rp.data ?? {};
+          this.store.dispatch(addToCart({ cart: cart }));
+        })
+      }
     })
   }
 }

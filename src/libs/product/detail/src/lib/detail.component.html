@@ -94,7 +94,7 @@
           <span class="input-group-text rounded-pill">Số lượng</span>
         </div>
       </div>
-      <button *ngIf="((token$ | async)?.length ?? 0) > 0" type="submit" class="btn background-primary w-100">Thêm vào
+      <button (click)="addCartItems()" *ngIf="((token$ | async)?.length ?? 0) > 0" type="submit" class="btn background-primary w-100">Thêm vào
         giỏ hàng</button>
     </div>
   </div>
