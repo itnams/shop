@@ -19,6 +19,7 @@ import { SearchProductCommand } from './data-access/command';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent implements AfterViewInit {
+  Math = Math; 
   sortOrderOptions = [
     { value: 'asc_price', label: 'Giá tăng dần' },
     { value: 'desc_price', label: 'Giá giảm dần' },

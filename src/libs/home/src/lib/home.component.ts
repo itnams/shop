@@ -17,6 +17,7 @@ import { SearchProductCommand } from './data-access/command';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeComponent implements OnInit{
+  Math = Math; 
   token$ = new BehaviorSubject<string>("");
   slidesPerView: number = 3;
   newWallet$ = new BehaviorSubject<Product[]>([]);
