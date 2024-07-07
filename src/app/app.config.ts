@@ -2,7 +2,7 @@ import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } fr
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideStore } from '@ngrx/store';
-import { ApiService, authReducer } from '@shop/data-access';
+import { ApiService, authReducer, VndFormatPipe } from '@shop/data-access';
 import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
@@ -14,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     importProvidersFrom(
       ApiService,
+      VndFormatPipe
     )
   ],
 };

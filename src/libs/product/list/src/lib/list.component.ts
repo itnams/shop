@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { addToCart, AuthState } from '@shop/data-access';
+import { addToCart, AuthState, PipesModule } from '@shop/data-access';
 import { ProductsService } from './data-access/services';
 import { Product } from './data-access/models';
 import { AddCartItemCommand, SearchProductCommand } from './data-access/command';
@@ -13,7 +13,7 @@ import { AddCartItemCommand, SearchProductCommand } from './data-access/command'
   selector: 'list',
   standalone: true,
   imports: [CommonModule,
-    FormsModule, ReactiveFormsModule, RouterModule],
+    FormsModule, ReactiveFormsModule, RouterModule, PipesModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -33,7 +33,7 @@
                     alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{item.productName}}</h5>
-                    <p class="card-text"><s>{{item.oldPrice}}đ</s> &nbsp; <b>{{item.price}}đ</b> (-{{ Math.round((item.price ?? 0) / (item.oldPrice ?? 0) * 100) }}%)</p>
+                    <p class="card-text"><s>{{item.oldPrice ?? 0 | vndFormat}}</s> &nbsp; <b>{{item.price ?? 0  | vndFormat}}</b> (-{{ Math.round((item.price ?? 0) / (item.oldPrice ?? 0) * 100) }}%)</p>
                 </div>
                 <div class="d-flex">
                     <div class="me-2" *ngIf="((token$ | async)?.length ?? 0) > 0" >

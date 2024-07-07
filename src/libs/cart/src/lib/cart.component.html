@@ -19,12 +19,12 @@
                             <input type="checkbox" (change)="{}">
                         </td>
                         <td data-label="Product">{{ item.product?.productName }}</td>
-                        <td data-label="Price">{{ item.product?.price }}đ</td>
+                        <td data-label="Price">{{ (item.product?.price ?? 0) | vndFormat }}</td>
                         <td data-label="Quantity">
                             <input type="number" [value]="item.quantity"
                                 (change)="updateCartItem(item.cartItemId ?? 0, $event)" [min]="0" [max]="10">
                         </td>
-                        <td data-label="Total">{{ (item.product?.price ?? 0) * (item.quantity ?? 0) }}đ</td>
+                        <td data-label="Total">{{ (item.product?.price ?? 0) * (item.quantity ?? 0) | vndFormat }}</td>
                         <td data-label="Action">
                             <button class="btn btn-danger btn-sm"
                                 (click)="deleteItem(item.cartItemId ?? 0)">Delete</button>
@@ -33,7 +33,21 @@
                 </tbody>
             </table>
             <div class="w-100 p-2 text-end">
-                <button  class="btn btn-primary">Đặt hàng</button>
+                <div *ngIf="showModal$ | async" class="modal" tabindex="-1" role="dialog" style="height: 80vh; width: 80vw;">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Order</h5>
+                          <button (click)="closeModal()" type="button" class="btn-close custom-close-btn" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <order [items]="(items$ | async) ?? []"></order>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <button class="btn btn-primary" (click)="openModal()">Đặt hàng</button>
             </div>
         </div>
     </div>

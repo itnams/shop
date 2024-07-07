@@ -6,14 +6,14 @@ import { Product } from './data-access/models';
 import { ProductDetailService } from './data-access/services';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { addToCart, AuthState } from '@shop/data-access';
+import { addToCart, AuthState, PipesModule } from '@shop/data-access';
 import { Review } from './data-access/models/review.models';
 import { AddCartItemCommand, ReviewProductCommand } from './data-access/command';
 
 @Component({
   selector: 'detail',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, PipesModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

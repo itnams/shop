@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { addToCart, AuthState } from '@shop/data-access';
+import { addToCart, AuthState, PipesModule } from '@shop/data-access';
 import { HomeService } from './data-access/services';
 import { Product } from './data-access/models';
 import { SearchProductCommand } from './data-access/command';
@@ -11,7 +11,7 @@ import { AddCartItemCommand } from './data-access/command/add-cart-item.command'
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PipesModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

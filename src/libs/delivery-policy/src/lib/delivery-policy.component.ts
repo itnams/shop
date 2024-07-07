@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'lib-delivery-policy',
+  selector: 'delivery-policy',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './delivery-policy.component.html',

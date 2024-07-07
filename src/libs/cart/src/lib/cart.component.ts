@@ -1,24 +1,24 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from './data-access/services';
 import { BehaviorSubject, debounceTime, Subject, Subscription, switchMap } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { addToCart, AuthState, CartItem } from '@shop/data-access';
-import { AddCartItemCommand, UpdateCartItemCommand } from './data-access/command';
-
+import { addToCart, AuthState, CartItem, PipesModule } from '@shop/data-access';
+import { UpdateCartItemCommand } from './data-access/command';
+import { CustomModalComponent } from '@shop/custom-modal';
+import { OrderComponent } from '@shop/order';
 @Component({
-  selector: 'lib-cart',
+  selector: 'cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CustomModalComponent, OrderComponent, PipesModule  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent {
+  showModal$ = new BehaviorSubject<Boolean>(false);
   private updateCartSubject = new Subject<{ id: number, quantity: number }>();
   items$ = new BehaviorSubject<CartItem[]>([]);
-  private inputSubject: Subject<{ id: number, event: Event }> = new Subject();
-  private inputSubscription!: Subscription;
   constructor(private service: CartService,private store: Store<{ auth: AuthState }>) {
     this.store.select('auth', 'cart').subscribe(cart => {
       const item = cart?.items ?? []
@@ -61,5 +61,12 @@ export class CartComponent {
 
   selectItem(id: number){
 
+  }
+  openModal() {
+    this.showModal$.next(true);
+  }
+
+  closeModal() {
+    this.showModal$.next(false);
   }
 }
