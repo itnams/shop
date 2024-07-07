@@ -48,11 +48,26 @@ export class ApiService {
       .post<T>(fullUrl, postData, this.httpOptions)
       .pipe(finalize(() => this.loadingService.hide()));
   }
+  putToPublicApi<T>(url: string, params?: any): Observable<T> {
+    this.loadingService.show();
+    const postData = JSON.stringify(params || {});
+    this.prepareHeader();
+    const fullUrl = this.baseUrl + url;
+    return this.http
+      .put<T>(fullUrl, postData, this.httpOptions)
+      .pipe(finalize(() => this.loadingService.hide()));
+  }
   getFromPublicApi<T>(url: string): Observable<T> {
     this.loadingService.show();
     const fullUrl = this.baseUrl + url;
     this.prepareHeader();
     return this.http.get<T>(fullUrl, this.httpOptions).pipe(finalize(() => this.loadingService.hide()));
+  }
+  deleteFromPublicApi<T>(url: string): Observable<T> {
+    this.loadingService.show();
+    const fullUrl = this.baseUrl + url;
+    this.prepareHeader();
+    return this.http.delete<T>(fullUrl, this.httpOptions).pipe(finalize(() => this.loadingService.hide()));
   }
   uploadFilesToPublicApi<T>(url: string, files: FormData): Observable<T> {
     this.loadingService.show();

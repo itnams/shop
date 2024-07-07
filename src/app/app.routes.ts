@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { AboutUsComponent } from '@shop/about-us';
+import { CartComponent } from '@shop/cart';
 import { DeliveryPolicyComponent } from '@shop/delivery-policy';
 import { HomeComponent } from '@shop/home';
 import { LoginComponent } from '@shop/login';
@@ -18,5 +19,6 @@ export const appRoutes: Route[] = [
     { path: 'privacy-policy', component: PrivacyPolicyComponent},
     { path: 'delivery-policy', component: DeliveryPolicyComponent},
     { path: 'product', component: ListComponent },
+    { path: 'cart', component: CartComponent },
     { path: 'product/:id', component: DetailComponent },
 ];

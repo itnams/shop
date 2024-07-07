@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@shop/about-us": ["src/libs/about-us/src/index.ts"],
+      "@shop/cart": ["src/libs/cart/src/index.ts"],
       "@shop/data-access": ["src/libs/common/data-access/src/index.ts"],
       "@shop/delivery-policy": ["src/libs/delivery-policy/src/index.ts"],
       "@shop/detail": ["src/libs/product/detail/src/index.ts"],
