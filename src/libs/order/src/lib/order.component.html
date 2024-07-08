@@ -17,21 +17,21 @@
     </div>
     <div class="shipping-address">
       <h4>Số điện thoại nhận hàng</h4>
-      <input type="text" [(ngModel)]="phone"  placeholder="Vui lòng nhập số điện thoại">
+      <input [readOnly]="readonly" type="text" [(ngModel)]="phone"  placeholder="Số điện thoại">
     </div>
     <div class="shipping-address">
       <h4>Địa chỉ</h4>
-      <textarea [(ngModel)]="shippingAddress" rows="3" class="form-control" placeholder="Vui lòng nhập địa chỉ"></textarea>
+      <textarea [readOnly]="readonly" [(ngModel)]="shippingAddress" rows="3" class="form-control" placeholder="Vui lòng nhập địa chỉ"></textarea>
     </div>
   
     <div class="payment-method">
       <h4>Phương thức thanh toán</h4>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="vnpay" value="vnpay" [(ngModel)]="paymentMethod">
+        <input [disabled]="readonly" class="form-check-input" type="radio" name="paymentMethod" id="vnpay" value="vnpay" [(ngModel)]="paymentMethod">
         <label class="form-check-label" for="vnpay">VNPay</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="Thanh toán khi nhận hàng" [(ngModel)]="paymentMethod">
+        <input [disabled]="readonly" class="form-check-input" type="radio" name="paymentMethod" id="cod" value="Thanh toán khi nhận hàng" [(ngModel)]="paymentMethod">
         <label class="form-check-label" for="cod">Thanh toán khi nhận hàng</label>
       </div>
     </div>

@@ -15,9 +15,10 @@ import { AddOrdersCommand } from './data-access/command';
 })
 export class OrderComponent {
   @Input() items!: CartItem[];
-  phone: string = '';
-  shippingAddress: string = '';
-  paymentMethod: string = 'vnpay';
+  @Input() phone: string = '';
+  @Input() shippingAddress: string = '';
+  @Input() paymentMethod: string = 'vnpay';
+  @Input() readonly: boolean = false;
   @Output() actionEvent = new EventEmitter();
 
   constructor(private service: OrderService){}

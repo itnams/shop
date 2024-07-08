@@ -2,12 +2,13 @@ import { Route } from '@angular/router';
 import { AboutUsComponent } from '@shop/about-us';
 import { CartComponent } from '@shop/cart';
 import { DeliveryPolicyComponent } from '@shop/delivery-policy';
+import { DetailComponent } from '@shop/detail';
 import { HomeComponent } from '@shop/home';
+import { ListComponent } from '@shop/list';
 import { LoginComponent } from '@shop/login';
+import { MyOrdersComponent } from '@shop/my-orders';
 import { PrivacyPolicyComponent } from '@shop/privacy-policy';
 import { ReturnPolicyComponent } from '@shop/return-policy';
-import { DetailComponent } from 'src/libs/product/detail/src/lib/detail.component';
-import { ListComponent } from 'src/libs/product/list/src/lib/list.component';
 
 export const appRoutes: Route[] = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,5 +21,6 @@ export const appRoutes: Route[] = [
     { path: 'delivery-policy', component: DeliveryPolicyComponent},
     { path: 'product', component: ListComponent },
     { path: 'cart', component: CartComponent },
+    { path: 'my-orders', component: MyOrdersComponent },
     { path: 'product/:id', component: DetailComponent },
 ];

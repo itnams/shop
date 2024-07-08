@@ -27,6 +27,7 @@
       "@shop/list": ["src/libs/product/list/src/index.ts"],
       "@shop/loading-bar": ["src/libs/common/loading-bar/src/index.ts"],
       "@shop/login": ["src/libs/login/src/index.ts"],
+      "@shop/my-orders": ["src/libs/my-orders/src/index.ts"],
       "@shop/order": ["src/libs/order/src/index.ts"],
       "@shop/privacy-policy": ["src/libs/privacy-policy/src/index.ts"],
       "@shop/return-policy": ["src/libs/return-policy/src/index.ts"]
