@@ -1,38 +1,39 @@
 <div class="container">
-    <h2>Order Summary</h2>
     <div class="order-list">
       <div *ngFor="let item of items" class="order-item">
         <div class="item-info">
           <h4>{{ item.product?.productName }}</h4>
-          <p>Quantity: {{ item.quantity }}</p>
-          <p>Price: {{ (item.product?.price ?? 0) | vndFormat}}</p>
+          <p>Số luọng: {{ item.quantity }}</p>
+          <p>Giá: {{ (item.product?.price ?? 0) | vndFormat}}</p>
         </div>
         <div class="item-total">
-          <p>Total: {{ (item.quantity ?? 0)* (item.product?.price ?? 0) | vndFormat}}</p>
+          <p>Tổng: {{ (item.quantity ?? 0)* (item.product?.price ?? 0) | vndFormat}}</p>
         </div>
       </div>
     </div>
   
     <div class="order-summary">
-      <h4>Total Amount: {{ getTotalAmount() | vndFormat }}</h4>
+      <h4>Tổng tiền: {{ getTotalAmount() | vndFormat }}</h4>
     </div>
-  
     <div class="shipping-address">
-      <h4>Shipping Address</h4>
-      <textarea [(ngModel)]="shippingAddress" rows="3" class="form-control" placeholder="Enter your shipping address"></textarea>
+      <h4>Số điện thoại nhận hàng</h4>
+      <input type="text" [(ngModel)]="phone"  placeholder="Vui lòng nhập số điện thoại">
+    </div>
+    <div class="shipping-address">
+      <h4>Địa chỉ</h4>
+      <textarea [(ngModel)]="shippingAddress" rows="3" class="form-control" placeholder="Vui lòng nhập địa chỉ"></textarea>
     </div>
   
     <div class="payment-method">
-      <h4>Payment Method</h4>
+      <h4>Phương thức thanh toán</h4>
       <div class="form-check">
         <input class="form-check-input" type="radio" name="paymentMethod" id="vnpay" value="vnpay" [(ngModel)]="paymentMethod">
         <label class="form-check-label" for="vnpay">VNPay</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="cod" [(ngModel)]="paymentMethod">
-        <label class="form-check-label" for="cod">Cash on Delivery</label>
+        <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="Thanh toán khi nhận hàng" [(ngModel)]="paymentMethod">
+        <label class="form-check-label" for="cod">Thanh toán khi nhận hàng</label>
       </div>
     </div>
-  
-    <button class="btn btn-primary" (click)="placeOrder()">Place Order</button>
+    <button [disabled]="shippingAddress.length == 0 || phone.length == 0" class="btn btn-primary" (click)="addOder()">Place Order</button>
   </div>

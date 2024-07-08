@@ -12,11 +12,11 @@ export class CartService {
 
   addCartItem(command: AddCartItemCommand) {
     const url = '/cart/add-item'
-    return this.apiService.postToPublicApi<IApiResult<Boolean>>(url, command)
+    return this.apiService.postToPublicApi<IApiResult<boolean>>(url, command)
   }
   updateCartItem(command: UpdateCartItemCommand) {
     const url = '/cart/update-item'
-    return this.apiService.putToPublicApi<IApiResult<Boolean>>(url, command)
+    return this.apiService.putToPublicApi<IApiResult<boolean>>(url, command)
   }
   getCart() {
     const url = `/cart/items`
@@ -24,6 +24,6 @@ export class CartService {
   }
   deleteCartItem(id: number) {
     const url = `/cart/item?CartItemId=${id}`
-    return this.apiService.deleteFromPublicApi<IApiResult<Boolean>>(url)
+    return this.apiService.deleteFromPublicApi<IApiResult<boolean>>(url)
   }
 }

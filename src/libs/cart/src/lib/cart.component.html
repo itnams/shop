@@ -16,7 +16,7 @@
                 <tbody>
                     <tr *ngFor="let item of (items$ | async) ?? []">
                         <td data-label="Select">
-                            <input type="checkbox" (change)="{}">
+                            <input type="checkbox" [checked]="checkItem(item.cartItemId ?? 0)" (change)="selectItem(item.cartItemId ?? 0)">
                         </td>
                         <td data-label="Product">{{ item.product?.productName }}</td>
                         <td data-label="Price">{{ (item.product?.price ?? 0) | vndFormat }}</td>
@@ -33,7 +33,7 @@
                 </tbody>
             </table>
             <div class="w-100 p-2 text-end">
-                <div *ngIf="showModal$ | async" class="modal" tabindex="-1" role="dialog" style="height: 80vh; width: 80vw;">
+                <div *ngIf="showModal$ | async" class="modal" tabindex="-1" role="dialog" style="height: auto; width: auto; min-width: 365px;">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -42,12 +42,12 @@
                             aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          <order [items]="(items$ | async) ?? []"></order>
+                          <order [items]="itemSelected" (actionEvent)="handelCloseModal()"></order>
                         </div>
                       </div>
                     </div>
                   </div>
-                <button class="btn btn-primary" (click)="openModal()">Đặt hàng</button>
+                <button [disabled]="itemSelected.length == 0" class="btn btn-primary" (click)="openModal()">Đặt hàng</button>
             </div>
         </div>
     </div>

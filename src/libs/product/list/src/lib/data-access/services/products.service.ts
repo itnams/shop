@@ -17,7 +17,7 @@ export class ProductsService {
   }
   addCartItem(command: AddCartItemCommand) {
     const url = '/cart/add-item'
-    return this.apiService.postToPublicApi<IApiResult<Boolean>>(url, command)
+    return this.apiService.postToPublicApi<IApiResult<boolean>>(url, command)
   }
   getCart() {
     const url = `/cart/items`

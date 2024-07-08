@@ -7,18 +7,20 @@ import { addToCart, AuthState, CartItem, PipesModule } from '@shop/data-access';
 import { UpdateCartItemCommand } from './data-access/command';
 import { CustomModalComponent } from '@shop/custom-modal';
 import { OrderComponent } from '@shop/order';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'cart',
   standalone: true,
-  imports: [CommonModule, CustomModalComponent, OrderComponent, PipesModule  ],
+  imports: [CommonModule, CustomModalComponent, OrderComponent, PipesModule , FormsModule, ReactiveFormsModule ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent {
-  showModal$ = new BehaviorSubject<Boolean>(false);
+  showModal$ = new BehaviorSubject<boolean>(false);
   private updateCartSubject = new Subject<{ id: number, quantity: number }>();
   items$ = new BehaviorSubject<CartItem[]>([]);
+  itemSelected: CartItem[] = [] 
   constructor(private service: CartService,private store: Store<{ auth: AuthState }>) {
     this.store.select('auth', 'cart').subscribe(cart => {
       const item = cart?.items ?? []
@@ -60,7 +62,17 @@ export class CartComponent {
   }
 
   selectItem(id: number){
-
+    const items = this.items$.value;
+    const index = items.findIndex(i=> i.cartItemId == id)
+    const indexSelect = this.itemSelected.findIndex(i=> i.cartItemId == id)
+    if(indexSelect > -1){
+      this.itemSelected.splice(indexSelect,1)
+    } else {
+      this.itemSelected.push(items[index])
+    }
+  }
+  checkItem(id: number){
+    return this.itemSelected.findIndex(it=> it.cartItemId == id) > -1
   }
   openModal() {
     this.showModal$.next(true);
@@ -68,5 +80,9 @@ export class CartComponent {
 
   closeModal() {
     this.showModal$.next(false);
+  }
+  handelCloseModal() {
+    this.showModal$.next(false);
+    this.getCart()
   }
 }
