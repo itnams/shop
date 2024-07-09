@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { AboutUsComponent } from '@shop/about-us';
+import { AddProductComponent } from '@shop/add-product';
 import { CartComponent } from '@shop/cart';
 import { DashboardComponent } from '@shop/dashboard';
 import { DeliveryPolicyComponent } from '@shop/delivery-policy';
@@ -33,6 +34,7 @@ export const appRoutes: Route[] = [
     { path: 'manager-product', component: ManagerProductComponent},
     { path: 'manager-user', component: ManagerUserComponent},
     { path: 'orders', component: OrdersComponent},
+    { path: 'product/add', component: AddProductComponent },
     { path: 'product/:id', component: DetailComponent },
     { path: '**', component: NotFoundComponent }
 ];

@@ -28,8 +28,8 @@ export class ManagerProductComponent {
   sortOrderOptions = [
     { value: 'asc_price', label: 'Giá tăng dần' },
     { value: 'desc_price', label: 'Giá giảm dần' },
-    { value: 'asc_id', label: 'Sản phẩm mới' },
-    { value: 'desc_id', label: 'Sản phẩm củ' }
+    { value: 'asc_id', label: 'Sản phẩm củ' },
+    { value: 'desc_id', label: 'Sản phẩm mới' }
   ];
   productTypes = [{ value: -1, label: 'All' },{ value: 1, label: 'Túi xách' },{ value: 2, label: 'Balo' },{ value: 3, label: 'Ví' }];
   token$ = new BehaviorSubject<string>("");
@@ -50,23 +50,15 @@ export class ManagerProductComponent {
       productTypes: [-1],
       sortOrder: ['asc_price']
     });
-    this.route.queryParams.subscribe((params) => {
-      this.searchForm.patchValue({
-        productTypes: parseInt(params['productType'])
-      })
-      this.searchProduct()
-    });
   }
   ngAfterViewInit(): void {
-    
+    this.searchProduct()
   }
   searchProduct(){
     let command: SearchProductCommand = {
       productName: this.searchForm.value.searchTerm ?? '', 
     }
-    if(this.searchForm.value.productTypes ?? 0 > 0){
-      command.categoryId = this.searchForm.value.productTypes ?? 0
-    }
+    command.categoryId = this.searchForm.value.productTypes == -1 ? undefined : this.searchForm.value.productTypes
     if(this.searchForm.value.minPrice > 0){
       command.minPrice = this.searchForm.value.minPrice
     }

@@ -23,8 +23,8 @@ export class ListComponent implements AfterViewInit {
   sortOrderOptions = [
     { value: 'asc_price', label: 'Giá tăng dần' },
     { value: 'desc_price', label: 'Giá giảm dần' },
-    { value: 'asc_id', label: 'Sản phẩm mới' },
-    { value: 'desc_id', label: 'Sản phẩm củ' }
+    { value: 'asc_id', label: 'Sản phẩm củ' },
+    { value: 'desc_id', label: 'Sản phẩm mới' }
   ];
   productTypes = [{ value: 1, label: 'Túi xách' },{ value: 2, label: 'Balo' },{ value: 3, label: 'Ví' }];
   token$ = new BehaviorSubject<string>("");

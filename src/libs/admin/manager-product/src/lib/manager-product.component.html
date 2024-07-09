@@ -1,6 +1,6 @@
 <div class="container py-5">
     <div class="w-100 text-end my-2">
-        <button (click)="{}" [disabled]="(nextLink$ | async)?.length == 0" class="mx-auto btn background-primary">Thêm sản phẩm</button>
+        <button [routerLink]="['/product','add']" class="mx-auto btn background-primary">Thêm sản phẩm</button>
     </div>
     <form [formGroup]="searchForm" (ngSubmit)="searchProduct()">
         <div class="row mb-3 gy-3">
