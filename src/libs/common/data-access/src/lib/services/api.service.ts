@@ -78,11 +78,7 @@ export class ApiService {
     };
     httpOptions.headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.token$.value,
-      'sec-ch-ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
-      'sec-ch-ua-mobile': '?0',
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
       'accept': 'text/plain',
-      'sec-ch-ua-platform': '"Windows"'
     });
     const fullUrl = this.baseUrl + url;
     return this.http

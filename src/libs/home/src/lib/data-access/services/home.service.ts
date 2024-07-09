@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService, IApiResult } from '@shop/data-access';
 import { SearchProductCommand } from '../command';
-import { Cart, Product } from '../models';
+import { Cart, Product, Promotions } from '../models';
 import { AddCartItemCommand } from '../command/add-cart-item.command';
 
 @Injectable({
@@ -20,5 +20,9 @@ export class HomeService {
   getCart() {
     const url = `/cart/items`
     return this.apiService.getFromPublicApi<IApiResult<Cart>>(url)
+  }
+  getPromotionsStillValid(){
+    const url = '/Promotions/still-valid'
+    return this.apiService.getFromPublicApi<IApiResult<Promotions[]>>(url);
   }
 }

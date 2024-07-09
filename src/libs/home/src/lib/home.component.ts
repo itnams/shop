@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { addToCart, AuthState, PipesModule } from '@shop/data-access';
 import { HomeService } from './data-access/services';
-import { Product } from './data-access/models';
+import { Product, Promotions } from './data-access/models';
 import { SearchProductCommand } from './data-access/command';
 import { AddCartItemCommand } from './data-access/command/add-cart-item.command';
 @Component({
@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit{
   newWallet$ = new BehaviorSubject<Product[]>([]);
   newHandBag$ = new BehaviorSubject<Product[]>([]);
   newBalo$ = new BehaviorSubject<Product[]>([]);
+  promotions$ = new BehaviorSubject<Promotions[]>([]);
   constructor(private router: Router, private store: Store<{ auth: AuthState }>,private service: HomeService) {
     this.store.pipe(select('auth', 'token')).subscribe(resp => this.token$.next(resp ?? ""))
     this.setSlidesPerView();
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit{
     this.slidesPerView = window.innerWidth > 500 ? 3 : 1;
   }
   loading(){
+    this.getPromotionsStillValid()
     this.searchNewBalo();
     this.searchNewHandBag();
     this.searchWallet();
@@ -67,6 +69,11 @@ export class HomeComponent implements OnInit{
     }
     this.service.searchProduct(command,10,1,'desc_id').subscribe(resp =>{
       this.newWallet$.next(resp.data ?? [])
+    })
+  }
+  getPromotionsStillValid(){
+    this.service.getPromotionsStillValid().subscribe(resp => {
+      this.promotions$.next(resp.data ?? [])
     })
   }
   addCartItems(productId: number){

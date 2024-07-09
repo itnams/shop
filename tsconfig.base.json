@@ -17,6 +17,7 @@
     "paths": {
       "@shop/about-us": ["src/libs/about-us/src/index.ts"],
       "@shop/add-product": ["src/libs/admin/ui/add-product/src/index.ts"],
+      "@shop/add-promotion": ["src/libs/admin/ui/add-promotion/src/index.ts"],
       "@shop/cart": ["src/libs/cart/src/index.ts"],
       "@shop/custom-modal": ["src/libs/common/custom-modal/src/index.ts"],
       "@shop/dashboard": ["src/libs/admin/dashboard/src/index.ts"],
@@ -36,6 +37,7 @@
       "@shop/order": ["src/libs/order/src/index.ts"],
       "@shop/orders": ["src/libs/admin/orders/src/index.ts"],
       "@shop/privacy-policy": ["src/libs/privacy-policy/src/index.ts"],
+      "@shop/promotions": ["src/libs/admin/promotions/src/index.ts"],
       "@shop/register": ["src/libs/register/src/index.ts"],
       "@shop/return-policy": ["src/libs/return-policy/src/index.ts"]
     }

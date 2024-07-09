@@ -4,15 +4,8 @@
             centered-slides="true" slides-per-view="auto" coverflow-effect-rotate="50" coverflow-effect-stretch="0"
             coverflow-effect-depth="100" coverflow-effect-modifier="1" coverflow-effect-slide-shadows="true" loop="true"
             autoplay-delay="2500" autoplay-disable-on-interaction="false">
-            <swiper-slide>
-                <img src="https://tina.shop/wp-content/uploads/2021/10/big-sale-30-211020.jpg" />
-            </swiper-slide>
-            <swiper-slide>
-                <img
-                    src="https://www.vascara.com/uploads/web/900/Banner-mac-dinh/2024/thang-5/780-x-590-copy-2-1.jpg" />
-            </swiper-slide>
-            <swiper-slide>
-                <img src="https://mediaelly.sgp1.digitaloceanspaces.com/uploads/2018/05/14091818/tintuc-1.png" />
+            <swiper-slide *ngFor="let item of (promotions$ | async)">
+                <img [src]="'data:image/png;base64,' + item.image" />
             </swiper-slide>
         </swiper-container>
     </div>

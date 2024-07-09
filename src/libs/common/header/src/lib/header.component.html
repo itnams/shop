@@ -75,6 +75,20 @@
                         checkActive('orders') == true
                     }" [routerLink]="['/orders']">Danh sách đơn hàng</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{active:
+                        checkActive('promotions') == true
+                    }" aria-current="page" [routerLink]="['/promotions']">Chương trình khuyến mãi</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="((token$ | async)?.length ?? 0) > 0">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{userName$ | async}}
+                    </a>
+                    <ul class="dropdown-menu background-primary-400" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

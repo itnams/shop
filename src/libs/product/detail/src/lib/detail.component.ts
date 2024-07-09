@@ -26,11 +26,13 @@ export class DetailComponent implements AfterViewInit {
   rating: number = 0;
   stars: number[] = [1, 2, 3, 4, 5];
   token$ = new BehaviorSubject<string>("");
+  role$ = new BehaviorSubject<string>("");
   id = 0;
   product$ = new BehaviorSubject<Product>({})
   review$ = new BehaviorSubject<Review[]>([])
   constructor(private service: ProductDetailService, private route: ActivatedRoute, private store: Store<{ auth: AuthState }>
   ) {
+    this.store.pipe(select('auth', 'role')).subscribe(resp => this.role$.next(resp ?? ""))
     this.store.pipe(select('auth', 'token')).subscribe(resp => this.token$.next(resp ?? ""))
     this.route.paramMap.subscribe((params) => {
       this.id = parseInt(params.get('id')?? '0');

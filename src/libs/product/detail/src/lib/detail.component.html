@@ -88,13 +88,13 @@
           </div>
         </div>
       </div>
-      <div class="input-group mb-3" *ngIf="((token$ | async)?.length ?? 0) > 0">
+      <div class="input-group mb-3" *ngIf="((token$ | async)?.length ?? 0) > 0 && (role$ | async) != 'Admin'">
         <input type="number" class="form-control rounded-pill" [(ngModel)]="quantity" min="1" aria-label="Quantity">
         <div class="input-group-append ps-2">
           <span class="input-group-text rounded-pill">Số lượng</span>
         </div>
       </div>
-      <button (click)="addCartItems()" *ngIf="((token$ | async)?.length ?? 0) > 0" type="submit" class="btn background-primary w-100">Thêm vào
+      <button (click)="addCartItems()" *ngIf="((token$ | async)?.length ?? 0) > 0 && (role$ | async) != 'Admin'" type="submit" class="btn background-primary w-100">Thêm vào
         giỏ hàng</button>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { AboutUsComponent } from '@shop/about-us';
 import { AddProductComponent } from '@shop/add-product';
+import { AddPromotionComponent } from '@shop/add-promotion';
 import { CartComponent } from '@shop/cart';
 import { DashboardComponent } from '@shop/dashboard';
 import { DeliveryPolicyComponent } from '@shop/delivery-policy';
@@ -14,6 +15,7 @@ import { MyOrdersComponent } from '@shop/my-orders';
 import { NotFoundComponent } from '@shop/not-found';
 import { OrdersComponent } from '@shop/orders';
 import { PrivacyPolicyComponent } from '@shop/privacy-policy';
+import { PromotionsComponent } from '@shop/promotions';
 import { RegisterComponent } from '@shop/register';
 import { ReturnPolicyComponent } from '@shop/return-policy';
 
@@ -34,6 +36,8 @@ export const appRoutes: Route[] = [
     { path: 'manager-product', component: ManagerProductComponent},
     { path: 'manager-user', component: ManagerUserComponent},
     { path: 'orders', component: OrdersComponent},
+    { path: 'promotions', component: PromotionsComponent },
+    { path: 'promotions/add', component: AddPromotionComponent },
     { path: 'product/add', component: AddProductComponent },
     { path: 'product/:id', component: DetailComponent },
     { path: '**', component: NotFoundComponent }
