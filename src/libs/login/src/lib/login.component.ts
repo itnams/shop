@@ -1,15 +1,16 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from './data-access/services';
 import { LoginCommand } from './data-access/command';
 import { AuthState, login } from '@shop/data-access';
 import { Store } from '@ngrx/store';
+
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

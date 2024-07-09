@@ -11,6 +11,6 @@ export class OrderService {
 
   addOder(command: AddOrdersCommand) {
     const url = '/cart/orders'
-    return this.apiService.postToPublicApi<IApiResult<boolean>>(url, command)
+    return this.apiService.postToPublicApi<IApiResult<string>>(url, command)
   }
 }

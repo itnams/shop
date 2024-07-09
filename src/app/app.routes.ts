@@ -8,6 +8,7 @@ import { ListComponent } from '@shop/list';
 import { LoginComponent } from '@shop/login';
 import { MyOrdersComponent } from '@shop/my-orders';
 import { PrivacyPolicyComponent } from '@shop/privacy-policy';
+import { RegisterComponent } from '@shop/register';
 import { ReturnPolicyComponent } from '@shop/return-policy';
 
 export const appRoutes: Route[] = [
@@ -22,5 +23,6 @@ export const appRoutes: Route[] = [
     { path: 'product', component: ListComponent },
     { path: 'cart', component: CartComponent },
     { path: 'my-orders', component: MyOrdersComponent },
+    { path: 'register', component: RegisterComponent},
     { path: 'product/:id', component: DetailComponent },
 ];

@@ -30,6 +30,7 @@
       "@shop/my-orders": ["src/libs/my-orders/src/index.ts"],
       "@shop/order": ["src/libs/order/src/index.ts"],
       "@shop/privacy-policy": ["src/libs/privacy-policy/src/index.ts"],
+      "@shop/register": ["src/libs/register/src/index.ts"],
       "@shop/return-policy": ["src/libs/return-policy/src/index.ts"]
     }
   },

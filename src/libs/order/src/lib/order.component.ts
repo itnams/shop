@@ -17,7 +17,7 @@ export class OrderComponent {
   @Input() items!: CartItem[];
   @Input() phone: string = '';
   @Input() shippingAddress: string = '';
-  @Input() paymentMethod: string = 'vnpay';
+  @Input() paymentMethod: string = 'Momo';
   @Input() readonly: boolean = false;
   @Output() actionEvent = new EventEmitter();
 
@@ -48,7 +48,9 @@ export class OrderComponent {
     this.service.addOder(command).subscribe(resp=>{
       if(resp.data){
         alert('Đặt hàng thành công')
-        this.actionEvent.emit();
+        if(resp.data.length > 0){
+          window.location.href = resp.data;
+        }
       }
     })
   }
