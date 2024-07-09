@@ -17,9 +17,11 @@ import { HeaderService } from './data-access/services';
 export class HeaderComponent {
   routerLink = "home"
   token$ = new BehaviorSubject<string>("");
+  role$ = new BehaviorSubject<string>("");
   userName$ = new BehaviorSubject<string>("");
   cart$ = new BehaviorSubject<Cart>({});
   constructor(private router: Router, private store: Store<{ auth: AuthState }>, private service: HeaderService) {
+    this.store.pipe(select('auth', 'role')).subscribe(resp => this.role$.next(resp ?? ""))
     this.store.pipe(select('auth', 'token')).subscribe(resp => this.token$.next(resp ?? ""))
     this.store.pipe(select('auth', 'userName')).subscribe(resp => this.userName$.next(resp ?? ""))
     this.store.select('auth', 'cart').subscribe(cart => {

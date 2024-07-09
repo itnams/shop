@@ -1,0 +1,21 @@
+<div class="container py-5">
+    <h2 class="mb-4">User List</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of (user$ | async) ?? []">
+            <td data-label="User Name">{{ user.userName }}</td>
+            <td data-label="Password">{{ user.password }}</td>
+            <td data-label="Role">{{ user.role }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

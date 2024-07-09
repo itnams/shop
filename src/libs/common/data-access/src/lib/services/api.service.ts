@@ -79,6 +79,7 @@ export class ApiService {
   }
   handleError(error: HttpErrorResponse) {
     alert(error.error.message);
+    window.location.href = "/login"
     return throwError(error.error.message)
   }
 }

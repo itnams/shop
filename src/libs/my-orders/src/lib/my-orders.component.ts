@@ -8,7 +8,7 @@ import { Order, OrderItem } from './data-access/models';
 import { PipesModule } from '@shop/data-access';
 
 @Component({
-  selector: 'lib-my-orders',
+  selector: 'my-orders',
   standalone: true,
   imports: [CommonModule, CustomModalComponent, OrderComponent, PipesModule],
   templateUrl: './my-orders.component.html',

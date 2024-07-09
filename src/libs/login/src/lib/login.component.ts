@@ -37,7 +37,7 @@ export class LoginComponent {
         const userName = resp.data?.userName ?? "";
         const role = resp.data?.role ?? "";
         this.store.dispatch(login({ token, userName, role }));
-        this.route.navigate(['/home'])
+        this.route.navigate(['/dashboard'])
       } 
     })
   }

@@ -1,12 +1,17 @@
 import { Route } from '@angular/router';
 import { AboutUsComponent } from '@shop/about-us';
 import { CartComponent } from '@shop/cart';
+import { DashboardComponent } from '@shop/dashboard';
 import { DeliveryPolicyComponent } from '@shop/delivery-policy';
 import { DetailComponent } from '@shop/detail';
 import { HomeComponent } from '@shop/home';
 import { ListComponent } from '@shop/list';
 import { LoginComponent } from '@shop/login';
+import { ManagerProductComponent } from '@shop/manager-product';
+import { ManagerUserComponent } from '@shop/manager-user';
 import { MyOrdersComponent } from '@shop/my-orders';
+import { NotFoundComponent } from '@shop/not-found';
+import { OrdersComponent } from '@shop/orders';
 import { PrivacyPolicyComponent } from '@shop/privacy-policy';
 import { RegisterComponent } from '@shop/register';
 import { ReturnPolicyComponent } from '@shop/return-policy';
@@ -24,5 +29,10 @@ export const appRoutes: Route[] = [
     { path: 'cart', component: CartComponent },
     { path: 'my-orders', component: MyOrdersComponent },
     { path: 'register', component: RegisterComponent},
+    { path: 'dashboard', component: DashboardComponent},
+    { path: 'manager-product', component: ManagerProductComponent},
+    { path: 'manager-user', component: ManagerUserComponent},
+    { path: 'orders', component: OrdersComponent},
     { path: 'product/:id', component: DetailComponent },
+    { path: '**', component: NotFoundComponent }
 ];

@@ -1,0 +1,70 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Order List</h2>
+    <form class="mb-4" (ngSubmit)="searchOrders()">
+      <div class="form-row row">
+        <div class="form-group col-md-2">
+          <label for="orderId">Order ID</label>
+          <input type="text" class="form-control" id="orderId" [(ngModel)]="filterCriteria.orderId" name="orderId">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="orderDate">Order Date</label>
+          <input type="text" class="form-control" id="orderDate" [(ngModel)]="filterCriteria.orderDate" name="orderDate">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="status">Status</label>
+          <input type="text" class="form-control" id="status" [(ngModel)]="filterCriteria.status" name="status">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" id="phone" [(ngModel)]="filterCriteria.phone" name="phone">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" [(ngModel)]="filterCriteria.address" name="address">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="paymentMethods">Payment Methods</label>
+          <select class="form-control" id="paymentMethods" [(ngModel)]="filterCriteria.paymentMethods" name="paymentMethods">
+            <option value="">All</option>
+            <option *ngFor="let method of paymentMethodsOptions" [value]="method">{{ method }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="w-100 text-end">
+        <button type="submit" class="btn btn-primary my-1">Filter</button>
+      </div>
+    </form>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>Order ID</th>
+            <th>User ID</th>
+            <th>Order Date</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Payment Methods</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of (oders$ | async) ?? []">
+            <td data-label="Order ID">{{ order.orderId }}</td>
+            <td data-label="User ID">{{ order.userId }}</td>
+            <td data-label="Order Date">{{ order.orderDate }}</td>
+            <td data-label="Total Amount">{{ order.totalAmount }}</td>
+            <td data-label="Status">{{ order.status }}</td>
+            <td data-label="Address">{{ order.address }}</td>
+            <td data-label="Phone">{{ order.phone }}</td>
+            <td data-label="Payment Methods">{{ order.paymentMethods }}</td>
+            <td data-label="Actions">
+              <button [disabled]="order.status == 'Huỷ đơn' || order.status == 'Đã giao'" class="btn btn-primary mx-1" (click)="compleOrder(order)">Complete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="w-100 text-center py-4"><button [disabled]="nextLink.length == 0" class="btn btn-primary mx-auto" (click)="loadMore()">Load more</button></div>
+  </div>

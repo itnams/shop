@@ -1,0 +1,52 @@
+<div class="container py-5">
+    <div class="w-100 text-end my-2">
+        <button (click)="{}" [disabled]="(nextLink$ | async)?.length == 0" class="mx-auto btn background-primary">Thêm sản phẩm</button>
+    </div>
+    <form [formGroup]="searchForm" (ngSubmit)="searchProduct()">
+        <div class="row mb-3 gy-3">
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="Tìm kiếm theo tên" formControlName="searchTerm">
+            </div>
+            <div class="col-md-2">
+                <input type="number" class="form-control" placeholder="Giá tối thiểu" formControlName="minPrice">
+            </div>
+            <div class="col-md-2">
+                <input type="number" class="form-control" placeholder="Giá tối đa" formControlName="maxPrice">
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" formControlName="productTypes" (change)="{}">
+                    <option *ngFor="let option of productTypes" [value]="option.value">{{ option.label }}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" formControlName="sortOrder" (change)="searchProduct()">
+                    <option *ngFor="let option of sortOrderOptions" [value]="option.value">{{ option.label }}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn background-primary w-100"><i class="bi bi-search"></i></button>
+            </div>
+        </div>
+    </form>
+    <div class="row gy-4">
+        <div class="col-md-3" *ngFor="let item of (products$ | async) ?? []">
+            <div class="card" style="height: 610px;">
+                <img class="card-img-top" style="height: 410px;"
+                    [src]="'data:image/png;base64,' + (item.images![0].imagePath)"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.productName}}</h5>
+                    <p class="card-text"><s>{{item.oldPrice ?? 0 | vndFormat}}</s> &nbsp; <b>{{item.price ?? 0  | vndFormat}}</b> (-{{ Math.round((item.price ?? 0) / (item.oldPrice ?? 0) * 100) }}%)</p>
+                </div>
+                <div class="d-flex">
+                    <div class="w-100">
+                        <a [routerLink]="['/product',item.productId]" class="btn btn-primary w-100">Chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full text-center mt-4">
+        <button (click)="loadMore()" [disabled]="(nextLink$ | async)?.length == 0" class="mx-auto btn background-primary">Xem thêm</button>
+    </div>
+</div>

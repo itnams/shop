@@ -1,0 +1,37 @@
+.messenger-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .messenger-button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .zalo-button img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .zalo-button {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+  }

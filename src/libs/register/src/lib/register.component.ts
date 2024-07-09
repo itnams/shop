@@ -6,7 +6,7 @@ import { AuthService } from './data-access/services';
 import { LoginCommand } from './data-access/command';
 
 @Component({
-  selector: 'lib-register',
+  selector: 'register',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './register.component.html',
