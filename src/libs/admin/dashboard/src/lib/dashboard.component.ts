@@ -27,6 +27,9 @@ export class DashboardComponent implements OnInit {
   }
   fetchSalesData(): void {
     this.salesService.getMonthlySales().subscribe(resp => {
+      const series = resp.data?.map(item => {
+        return {name: `Tháng ${item.month}`, data: [item.totalSales ?? 0] } as any
+      })
       const chartMonthlySales = new Chart({
         chart: {
           type: 'bar'
@@ -37,12 +40,7 @@ export class DashboardComponent implements OnInit {
         credits: {
           enabled: false
         },
-        series: [
-          {
-            name: resp.data?.map(i=> ('Tháng ' + (i.month ?? 0))) ?? [],
-            data: resp.data?.map(i=> i.totalSales ?? 0) ?? []
-          } as any
-        ]
+        series: series
       })
       this.chartMonthlySales$.next(chartMonthlySales)
     });
@@ -50,6 +48,9 @@ export class DashboardComponent implements OnInit {
 
   fetchSalesCountData(): void {
     this.salesService.getMonthlySalesCount().subscribe(resp => {
+      const series = resp.data?.map(item => {
+        return {name: `Tháng ${item.month}`, data: [item.orderCount ?? 0] } as any
+      })
       const chartmonthlySalesCount = new Chart({
         chart: {
           type: 'bar'
@@ -60,12 +61,7 @@ export class DashboardComponent implements OnInit {
         credits: {
           enabled: false
         },
-        series: [
-          {
-            name: resp.data?.map(i=> ('Tháng ' + (i.month ?? 0))) ?? [],
-            data: resp.data?.map(i=> i.orderCount ?? 0) ?? []
-          } as any
-        ]
+        series: series
       })
       this.chartmonthlySalesCount$.next(chartmonthlySalesCount)
     });
@@ -73,6 +69,9 @@ export class DashboardComponent implements OnInit {
 
   fetchProductSalesData(): void {
     this.salesService.getMonthlyProductSales().subscribe(resp => {
+      const series = resp.data?.map(item => {
+        return {name: `Tháng ${item.month}`, data: [item.productCount ?? 0] } as any
+      })
       const chartMonthlyProductSales = new Chart({
         chart: {
           type: 'bar'
@@ -83,12 +82,7 @@ export class DashboardComponent implements OnInit {
         credits: {
           enabled: false
         },
-        series: [
-          {
-            name: resp.data?.map(i=> ('Tháng ' + (i.month ?? 0))) ?? [],
-            data: resp.data?.map(i=> i.productCount ?? 0) ?? []
-          } as any
-        ]
+        series: series
       })
       this.chartMonthlyProductSales$.next(chartMonthlyProductSales)
     });
