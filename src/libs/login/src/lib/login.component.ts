@@ -37,7 +37,11 @@ export class LoginComponent {
         const userName = resp.data?.userName ?? "";
         const role = resp.data?.role ?? "";
         this.store.dispatch(login({ token, userName, role }));
-        this.route.navigate(['/dashboard'])
+        if(role == "Admin"){
+          this.route.navigate(['/dashboard'])
+        } else {
+          this.route.navigate(['/home'])
+        }
       } 
     })
   }
