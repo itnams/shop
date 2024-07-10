@@ -14,6 +14,7 @@ import { ManagerUserComponent } from '@shop/manager-user';
 import { MyOrdersComponent } from '@shop/my-orders';
 import { NotFoundComponent } from '@shop/not-found';
 import { OrdersComponent } from '@shop/orders';
+import { PaymentSuccessComponent } from '@shop/payment-success';
 import { PrivacyPolicyComponent } from '@shop/privacy-policy';
 import { PromotionsComponent } from '@shop/promotions';
 import { RegisterComponent } from '@shop/register';
@@ -40,5 +41,6 @@ export const appRoutes: Route[] = [
     { path: 'promotions/add', component: AddPromotionComponent },
     { path: 'product/add', component: AddProductComponent },
     { path: 'product/:id', component: DetailComponent },
+    { path: 'payment-success/:id', component: PaymentSuccessComponent },
     { path: '**', component: NotFoundComponent }
 ];

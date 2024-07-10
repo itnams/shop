@@ -13,4 +13,8 @@ export class OrderService {
     const url = '/cart/orders'
     return this.apiService.postToPublicApi<IApiResult<string>>(url, command)
   }
+  getCart() {
+    const url = `/cart/items`
+    return this.apiService.getFromPublicApi<IApiResult<Cart>>(url)
+  }
 }

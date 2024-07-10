@@ -36,6 +36,7 @@
       "@shop/not-found": ["src/libs/not-found/src/index.ts"],
       "@shop/order": ["src/libs/order/src/index.ts"],
       "@shop/orders": ["src/libs/admin/orders/src/index.ts"],
+      "@shop/payment-success": ["src/libs/payment-success/src/index.ts"],
       "@shop/privacy-policy": ["src/libs/privacy-policy/src/index.ts"],
       "@shop/promotions": ["src/libs/admin/promotions/src/index.ts"],
       "@shop/register": ["src/libs/register/src/index.ts"],

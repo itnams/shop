@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CartItem, PipesModule } from '@shop/data-access';
+import { addToCart, AuthState, CartItem, PipesModule } from '@shop/data-access';
 import { OrderService } from './data-access/services';
 import { AddOrdersCommand } from './data-access/command';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'order',
@@ -21,13 +22,19 @@ export class OrderComponent {
   @Input() readonly: boolean = false;
   @Output() actionEvent = new EventEmitter();
 
-  constructor(private service: OrderService){}
+  constructor(private service: OrderService,private store: Store<{ auth: AuthState }>){}
   getTotalAmount(){
     let totalAmount = 0
     this.items.forEach(item=>{
       totalAmount += ((item.product?.price ?? 0)*(item.quantity ?? 0))
     })
     return totalAmount
+  }
+  getCart(){
+    this.service.getCart().subscribe(resp => {
+      const cart = resp.data ?? {};
+      this.store.dispatch(addToCart({ cart: cart }));
+    })
   }
   addOder(){
     const command: AddOrdersCommand = {
@@ -46,10 +53,11 @@ export class OrderComponent {
       })
     }
     this.service.addOder(command).subscribe(resp=>{
-      if(resp.data){
+      if(resp.success){
         alert('Đặt hàng thành công')
-        if(resp.data.length > 0){
-          window.location.href = resp.data;
+        this.getCart()
+        if(resp.data?.length ?? 0 > 0){
+          window.location.href = resp.data ?? '';
         }
       }
     })
